@@ -1,0 +1,137 @@
+head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='apple-touch-icon' sizes='76x76' href='../static/assets/img/apple-icon.png')
+    link(rel='icon' type='image/png' href='../static/assets/img/logos/university/uom.png')
+    script(src='../static/assets/js/core/jquery-3.6.3.min.js')
+    script(src='../static/assets/js/core/popper.min.js')
+    script(src='../static/assets/js/core/bootstrap.min.js')
+    script(src='../static/assets/js/plugins/perfect-scrollbar.min.js')
+    script(src='../static/assets/js/plugins/smooth-scrollbar.min.js')
+    // Github buttons
+    script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    script(src='../static/assets/js/plugins/chartjs.min.js')
+    title
+      | Non-Academic - Faculty Access Control System
+    // Fonts and icons
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet')
+    // Nucleo Icons
+    link(href='../static/assets/css/nucleo-icons.css' rel='stylesheet')
+    link(href='../static/assets/css/nucleo-svg.css' rel='stylesheet')
+    // Font Awesome Icons
+    script(src='https://kit.fontawesome.com/42d5adcbca.js' crossorigin='anonymous')
+    link(href='../static/assets/css/nucleo-svg.css' rel='stylesheet')
+    // CSS Files
+    link#pagestyle(href='../static/assets/css/argon-dashboard.css?v=2.0.4' rel='stylesheet')
+    link#pagestyle(href='../static/assets/css/navbar-custom.css' rel='stylesheet')
+
+
+body.g-sidenav-show.bg-gray-100
+  .min-height-300.bg-primary.position-absolute.w-100(style = "background-image: url('https://www.itfsu.com/assets/images/home/cover-1.png'); background-position-y: 50%;")
+    span.mask.bg-primary.opacity-6
+  aside#sidenav-main.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-radius-xl.my-3.fixed-start.ms-4
+    .sidenav-header
+      i#iconSidenav.fas.fa-times.p-3.cursor-pointer.text-secondary.opacity-5.position-absolute.end-0.top-0.d-none.d-xl-none(aria-hidden='true')
+      a.navbar-brand.m-0(href=' ' target='_blank')
+        img.navbar-brand-img.h-100(src='../static/assets/img/logos/university/uom.png' alt='main_logo')
+        span.ms-1.font-weight-bold University of Moratuwa
+    hr.horizontal.dark.mt-0
+    #sidenav-collapse-main.collapse.navbar-collapse.w-auto
+      ul.navbar-nav
+        li.user-title
+          a.nav-link.active(href='../pages/dashboard.html')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.mt-0.d-flex.align-items-center.justify-content-center
+              i.ni.ni-single-02.text-white.text-xlg.opacity-10
+            span.nav-link-text.ms-1.text-white #{employee[0].Name}
+              br
+              span.nav-link-text.text-light #{employee[0].Designation}
+        li.nav-item
+          a.nav-link#today-nav-link(href='/nac/today')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.d-flex.align-items-center.justify-content-center
+              i.ni.ni-time-alarm.text-primary.text-sm.opacity-10
+            span.nav-link-text.ms-1 Today
+        li.nav-item
+          a.nav-link#pastreports-nav-link(href='/nac/past')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.d-flex.align-items-center.justify-content-center
+              i.ni.ni-chart-bar-32.text-warning.text-sm.opacity-10
+            span.nav-link-text.ms-1 Past Reports
+        li.nav-item
+          a.nav-link#students-nav-link(href='/nac/stu')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.d-flex.align-items-center.justify-content-center
+              i.ni.ni-single-02.text-info.text-sm.opacity-10
+            span.nav-link-text.ms-1 Students
+        li.nav-item
+          a.nav-link#timetable-nav-link(href='/nac/timetable')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.d-flex.align-items-center.justify-content-center
+              i.ni.ni-calendar-grid-58.text-secondary.text-sm.opacity-10
+            span.nav-link-text.ms-1 Time Table
+        li.nav-item
+          a.nav-link#semester-nav-link(href='../nac/semester')
+            .icon.icon-shape.icon-sm.border-radius-md.text-center.me-2.d-flex.align-items-center.justify-content-center
+              i.ni.ni-settings.text-success.text-sm.opacity-10
+            span.nav-link-text.ms-1 Semester Settings
+  main.main-content.position-relative.border-radius-lg
+    // Navbar
+    nav#navbarBlur.navbar.navbar-main.navbar-expand-lg.px-0.mx-4.shadow-none.border-radius-xl(data-scroll='false')
+      .container-fluid.py-1.px-3
+        nav(aria-label='breadcrumb')
+          ol.breadcrumb.bg-transparent.mb-0.pb-0.pt-1.px-0.me-sm-6.me-5
+            li.breadcrumb-item.text-sm
+              a.opacity-5.text-white(href='javascript:;') Pages
+            li.breadcrumb-item.text-sm.text-white.active(aria-current='page') Today
+          h6.font-weight-bolder.text-white.mb-0 Overview
+        #navbar.collapse.navbar-collapse.mt-sm-0.mt-2.me-md-0.me-sm-4
+          .ms-md-auto.pe-md-3.d-flex.align-items-center
+          ul.navbar-nav.justify-content-end
+            //li.nav-item.d-flex.align-items-center.me-3
+              a.nav-link.text-white.font-weight-bold.px-0(href='javascript:;')
+                i.fa.fa-user.me-sm-1
+                span.d-sm-inline.d-none Profile
+            //li.nav-item.px-3.d-flex.align-items-center.me-3
+              a.nav-link.text-white.p-0(href='javascript:;')
+                i.fa.fa-cog.fixed-plugin-button-nav.cursor-pointer.me-sm-1
+                span.d-sm-inline.d-none Settings
+            //li.nav-item.d-flex.align-items-center.me-3
+              a.nav-link.text-white.font-weight-bold.px-0()
+                i.fa.fa-sign-out.me-sm-1
+                span.d-sm-inline.d-none Sign Out
+            li.nav-item.d-xl-none.ps-3.d-flex.align-items-center.me-3
+              a#iconNavbarSidenav.nav-link.text-white.p-0(href='javascript:;')
+                .sidenav-toggler-inner
+                  i.sidenav-toggler-line.bg-white
+                  i.sidenav-toggler-line.bg-white
+                  i.sidenav-toggler-line.bg-white
+
+
+    block content
+
+
+  // Footer Start
+  footer.footer.pt-3.custom-footer
+    .container-fluid
+      .row.align-items-center.justify-content-lg-between
+        .col-lg-6.mb-lg-0.mb-4
+          .copyright.text-center.text-sm.text-muted.text-lg-start
+            | &copy;
+            script.
+              document.write(new Date().getFullYear())
+            | ,
+            |               Designed by
+            a.font-weight-bold(href='https://uom.lk/itfac' target='_blank')
+              |  University of Moratuwa -
+              | IT Faculty
+        .col-lg-6
+          ul.nav.nav-footer.justify-content-center.justify-content-lg-end
+            li.nav-item
+              a.nav-link.text-muted(href='https://uom.lk/itfac' target='_blank') IT Faculty
+            li.nav-item
+              a.nav-link.text-muted(href='https://uom.lk' target='_blank') UOM
+    // Footer End
+  
+.loading-overlay#loading-overlay.d-flex.justify-content-center.align-items-center.bg-gray-900.opacity-9.invisible
+  .spinner-border.sipnner-custom.text-white.text-sm
+  .span.text-white.text-lg.ms-4 Please Wait...
+  
+
+// Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc
+script(src='../static/assets/js/argon-dashboard.min.js?v=2.0.4')
